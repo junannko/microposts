@@ -14,7 +14,11 @@
       <td><%= @user.password %></td>
       <td>(<%= link_to "edit" , edit_user_path %>)</td>
   </tr>
-
+  <tr>
+      <th><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>profile</th>
+      <td><%= @user.city %></td>
+      <td>(<%= link_to "edit" , edit_user_path %>)</td>
+  </tr>
 </table>
 
 
