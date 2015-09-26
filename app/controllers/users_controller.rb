@@ -1,11 +1,27 @@
 class UsersController < ApplicationController
+  before_action :show, only:[:edit, :update]
   
-  def show
+  def show #plofile
     @user=User.find(params[:id])
   end
   
-  def new
+  def new #sign up
     @user = User.new
+  end
+  
+  def edit
+    
+  end
+  
+  def update
+    if @user.update(user_params)
+      # 保存に成功した場合はトップページへリダイレクト
+      flash[:success]="Your edit has been reflected !"
+      redirect_to current_user
+    else
+      # 保存に失敗した場合は編集画面へ戻す
+      render 'edit'
+    end
   end
   
   def create
