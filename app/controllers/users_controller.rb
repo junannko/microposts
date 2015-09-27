@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :show, only:[:edit, :update]
   
   def show #plofile
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
   
   def new #sign up

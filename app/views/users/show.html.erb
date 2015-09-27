@@ -1,37 +1,44 @@
 <div class="low">
-<div class="col-md-6 col-md-offset-3">
 
 
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
+<aside class="col-md-4">
+    <section class="user_info">
+        <h1 class="show_h1">
+            <%= gravatar_for @user %>
+            <%= @user.name %>
+        </h1>
+        
+        <table class="table table-striped">
+          <tr>
+              <th><span class="glyphicon glyphicon-envelope icons_gray" aria-hidden="true"></span>email</th>
+              <td><%= @user.email %></td>
+          </tr>
+          <tr>
+              <th><span class="glyphicon glyphicon-globe icons_gray" aria-hidden="true"></span>city</th>
+              <td><%= @user.city %></td>
+          </tr>
+          <tr>
+              <th><span class="glyphicon glyphicon-user icons_gray" aria-hidden="true"></span>profile</th>
+              <td><%= @user.profile %></td>
+          </tr>
+          <tr>
+              <th><span class="glyphicon glyphicon-cd icons_gray" aria-hidden="true"></span>music</th>
+              <td><%= @user.music %></td>
+          </tr>
+        </table>
 
-<table class="table table-striped">
-  <tr>
-      <th><span class="glyphicon glyphicon-envelope icons_gray" aria-hidden="true"></span>email</th>
-      <td><%= @user.email %></td>
-  </tr>
-  <tr>
-      <th><span class="glyphicon glyphicon-lock icons_gray" aria-hidden="true"></span>password</th>
-      <td><%= @user.password %></td>
-  </tr>
-  <tr>
-      <th><span class="glyphicon glyphicon-globe icons_gray" aria-hidden="true"></span>city</th>
-      <td><%= @user.city %></td>
-  </tr>
-  <tr>
-      <th><span class="glyphicon glyphicon-user icons_gray" aria-hidden="true"></span>profile</th>
-      <td><%= @user.profile %></td>
-  </tr>
-  <tr>
-      <th><span class="glyphicon glyphicon-cd icons_gray" aria-hidden="true"></span>music</th>
-      <td><%= @user.music %></td>
-  </tr>
-</table>
+        <%= link_to "edit" , edit_user_path, class: "btn btn-default btn-block" %>
+    </section>
+</aside>
 
-    <%= link_to "edit" , edit_user_path, class: "btn btn-default btn-block" %>
-
-
+<div class="col-md-8">
+    <% if @user.microposts.any? %>
+        <h3>Microposts(<%= @user.microposts.count %>)</h3>
+        <ol class="microposts">
+            <%= render @microposts %>
+        </ol>
+    <% end %>
 </div>
+
+
 </div>
