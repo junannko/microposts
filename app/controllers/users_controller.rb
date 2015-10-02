@@ -4,10 +4,21 @@ class UsersController < ApplicationController
   def show #plofile
     @user = User.find(params[:id])
     @microposts = @user.microposts
+    @followings = @user.following_users
   end
   
   def new #sign up
     @user = User.new
+  end
+  
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success]="Welcome to the sample App !"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -25,15 +36,11 @@ class UsersController < ApplicationController
     end
   end
   
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      flash[:success]="Welcome to the sample App !"
-      redirect_to @user
-    else
-      render 'new'
-    end
+  def followings
+    @user=User.find(params[:followed_id])
   end
+  
+  
 
   private
 
