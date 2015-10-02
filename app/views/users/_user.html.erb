@@ -1,5 +1,38 @@
-<li>
-    <span class="following_name"><%= user.name %></span>
-    <span class="following_profile"><%= user.profile %></span>
-    <span class="following_music"><%= user.music %></span>
+<li class="following_child col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <span class="following_grava"><%= link_to gravatar_for(user, size:50), user %></span>
+            <span class="following_name"><%= user.name %></span>
+            <span class="following_profile"><%= user.profile %></span>
+        </div>
+    </div>
 </li>
+
+<style>
+    .following_box li{
+        list-style: none;
+    }
+    ol.following_box{
+        list-style: none;
+        padding: 0;
+        
+    }
+    .following_name,
+    .following_grava,
+    .following_profile{
+        display: block;
+    }
+    .following_grava{
+        height: 50px;
+    }
+    .following_name{
+        padding: 1rem 0 0.5rem 0;
+        font-size: 120%;
+        font-weight: bold;
+        color: #333;
+    }
+    .following_child .panel{
+        height: 18rem;
+        overflow: hidden;
+    }
+</style>

@@ -34,7 +34,7 @@
 <div class="col-md-8">
     <% if @followings.any? %>
         <h3>Forrowing Users <span class="badge"><%= @followings.count %><?span></h3>
-          <ol>
+          <ol class="row following_box">
             <%= render @followings %>
           </ol>
     <% end %>
