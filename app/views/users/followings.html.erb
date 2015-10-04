@@ -32,15 +32,28 @@
 </aside>
 
 <div class="col-md-8">
+    <div class="btn_bar">
+        <span class="btn btn-default active"><%= link_to "followings", followings_user_path %></span>
+        <span class="btn btn-default"><%= link_to "followers", followers_user_path %></span>
+    </div>
     
-<%= render 'follow_form' if logged_in? %>
-    <% if @followings.any? %>
-        <h3>Following Users <span class="badge"><%= @followings.count %><?span></h3>
-          <ol class="row following_box">
-            <%= render @followings %>
-          </ol>
-    <% end %>
+    <%= render 'follow_form' if logged_in? %>
+        <% if @followings.any? %>
+            <h3>Following Users <span class="badge"><%= @followings.count %><?span></h3>
+              <ol class="row following_box">
+                <%= render @followings %>
+              </ol>
+        <% end %>
+</div>
+
 </div>
 
 
-</div>
+<style>
+    .btn a{
+    text-decoration: none;
+    }
+    .btn_bar{
+    margin-bottom: 4rem;
+    }
+</style>
