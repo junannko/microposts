@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     
     has_secure_password
     has_many :microposts
+    
     has_many :following_relationships, class_name: "Relationship",
                                         foreign_key: "follower_id",
                                         dependent: :destroy
@@ -32,6 +33,11 @@ class User < ActiveRecord::Base
     # あるユーザーをフォローしているかどうか？
     def following?(other_user)
         following_users.include?(other_user)
+    end
+    
+    # タイムライン
+    def feed_items
+        Micropost.where(user_id: following_user_ids + [self.id])
     end
     
 end
