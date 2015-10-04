@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show #plofile
     @user = User.find(params[:id])
     @microposts = @user.microposts
-    @followings = @user.following_users
   end
   
   def new #sign up
@@ -37,7 +36,13 @@ class UsersController < ApplicationController
   end
   
   def followings
-    @user=User.find(params[:followed_id])
+    @user=User.find(params[:id])
+    @followings = @user.following_users
+  end
+  
+  def followers
+    @user=User.find(params[:id])
+    @followers = @user.follower_users
   end
   
   

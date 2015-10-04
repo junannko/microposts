@@ -2,7 +2,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <span class="following_grava"><%= link_to gravatar_for(user, size:50), user %></span>
-            <span class="following_name"><%= user.name %></span>
+            <span class="following_name"><%= link_to user.name, user %></span>
             <span class="following_profile"><%= user.profile %></span>
         </div>
     </div>
