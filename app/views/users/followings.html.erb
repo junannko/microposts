@@ -33,13 +33,13 @@
 
 <div class="col-md-8">
     <div class="btn_bar">
-        <span class="btn btn-default active"><%= link_to "followings", followings_user_path %></span>
-        <span class="btn btn-default"><%= link_to "followers", followers_user_path %></span>
+        <span class="btn btn-default active"><%= link_to "followings", followings_user_path %><span class="badge btn_badge"><%= @followings.count %></span></span>
+        <span class="btn btn-default"><%= link_to "followers", followers_user_path %><span class="badge btn_badge"><%= @followers.count %></span></span>
     </div>
     
     <%= render 'follow_form' if logged_in? %>
         <% if @followings.any? %>
-            <h3>Following Users <span class="badge"><%= @followings.count %><?span></h3>
+            <h3>Following Users <span class="badge"><%= @followings.count %></span></h3>
               <ol class="row following_box">
                 <%= render @followings %>
               </ol>
@@ -55,5 +55,14 @@
     }
     .btn_bar{
     margin-bottom: 4rem;
+    }
+    .btn_badge{
+        margin-left: 1rem;
+    }
+    .btn-default .badge{
+        background-color: #bbb;
+    }
+    .badge{
+        background-color: #8ddab1;
     }
 </style>

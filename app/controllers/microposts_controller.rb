@@ -19,6 +19,15 @@ class MicropostsController < ApplicationController
         redirect_to request.referrer  || root_url
     end
     
+    def retweet
+        @original = Micropost.find(params[:id])
+        @micropost = current_user.microposts.build(content: @original.content)
+        if @micropost.save!
+            flash[:success]="Micropost retweeted !"
+            redirect_to request.referrer || root_url
+        end
+    end
+    
     private
     def micropost_params
         params.require(:micropost).permit(:content)
